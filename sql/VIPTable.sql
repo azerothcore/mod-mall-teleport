@@ -12,7 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table acore_characters.vip
-CREATE TABLE IF NOT EXISTS `vip` (
+CREATE TABLE IF NOT EXISTS `Premium` (
   `AccountId` int(11) unsigned NOT NULL,
   `active` int(11) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`AccountId`)
