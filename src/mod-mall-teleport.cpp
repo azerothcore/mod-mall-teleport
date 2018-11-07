@@ -16,7 +16,7 @@ public:
 
     void OnLogin(Player* p) override
     {
-        QueryResult result = CharacterDatabase.PQuery("SELECT AccountId FROM VIP WHERE active = 1 AND AccountId = %u", p->GetSession()->GetAccountId());
+        QueryResult result = CharacterDatabase.PQuery("SELECT AccountId FROM PREMIUM WHERE active = 1 AND AccountId = %u", p->GetSession()->GetAccountId());
 
         if (result)
         {
