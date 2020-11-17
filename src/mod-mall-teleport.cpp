@@ -78,14 +78,20 @@ public:
         Player* p = handler->GetSession()->GetPlayer();
 
         if (!p)
+        {
             return false;
+        }
 
         if (p->IsInCombat())
+        {
             return false;
+        }
 
         if (!enabled)
+        {
             p->GetSession()->SendNotification("You do not have access to this command");
             return false;
+        }
 
         do
         {
