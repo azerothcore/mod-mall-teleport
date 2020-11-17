@@ -105,6 +105,7 @@ public:
             p->TeleportTo(map, position_x, position_y, position_z, orientation);
         } while (result->NextRow());
 
+        return true;
     }
 };
 
