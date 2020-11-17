@@ -6,6 +6,7 @@
 #include "Define.h"
 #include "GossipDef.h"
 #include "DataMap.h"
+#include "Chat.h"
 
 bool enabled;
 
@@ -77,14 +78,20 @@ public:
         Player* p = handler->GetSession()->GetPlayer();
 
         if (!p)
+        {
             return false;
+        }
 
         if (p->IsInCombat())
+        {
             return false;
+        }
 
         if (!enabled)
+        {
             p->GetSession()->SendNotification("You do not have access to this command");
             return false;
+        }
 
         do
         {
@@ -98,6 +105,7 @@ public:
             p->TeleportTo(map, position_x, position_y, position_z, orientation);
         } while (result->NextRow());
 
+        return true;
     }
 };
 
