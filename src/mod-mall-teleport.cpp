@@ -6,6 +6,7 @@
 #include "Define.h"
 #include "GossipDef.h"
 #include "DataMap.h"
+#include "Chat.h"
 
 bool enabled;
 
