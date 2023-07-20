@@ -39,9 +39,8 @@ public:
     {
         static ChatCommandTable MallTeleportTable =
         {
-            { "Mall", SEC_PLAYER, false, &HandleMallTeleportCommand, "" },
-            {"vipMall", SEC_PLAYER, false, &HandleVIPMallTeleportCommand, ""}
-
+            { "Mall",  HandleMallTeleportCommand, SEC_PLAYER, Console::Yes },
+            { "vipMall",  HandleVIPMallTeleportCommand, SEC_PLAYER, Console::Yes }
         };
 
         return MallTeleportTable;
