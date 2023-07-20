@@ -28,19 +28,22 @@ public:
     }
 };
 
+using namespace Acore::ChatCommands;
+
 class MallTeleport : public CommandScript
 {
 public:
     MallTeleport() : CommandScript("MallTeleport") { }
 
-    std::vector<ChatCommand> GetCommands() const override
+    ChatCommandTable GetCommands() const override
     {
-        static std::vector<ChatCommand> MallTeleportTable =
+        static ChatCommandTable MallTeleportTable =
         {
             { "Mall", SEC_PLAYER, false, &HandleMallTeleportCommand, "" },
             {"vipMall", SEC_PLAYER, false, &HandleVIPMallTeleportCommand, ""}
 
         };
+
         return MallTeleportTable;
     }
 
@@ -69,6 +72,7 @@ public:
             float orientation = fields[4].Get<float>();
 
             player->TeleportTo(map, position_x, position_y, position_z, orientation);
+
         } while (result->NextRow());
 
         return true;
@@ -106,6 +110,7 @@ public:
             float orientation = fields[4].Get<float>();
 
             player->TeleportTo(map, position_x, position_y, position_z, orientation);
+
         } while (result->NextRow());
 
         return true;
