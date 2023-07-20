@@ -46,7 +46,7 @@ public:
         return MallTeleportTable;
     }
 
-    static bool HandleMallTeleportCommand(ChatHandler* handler, char const* /* args */)
+    static bool HandleMallTeleportCommand(ChatHandler* handler, std::string /*args*/)
     {
         Player* player = handler->GetSession()->GetPlayer();
 
@@ -77,7 +77,7 @@ public:
         return true;
     }
 
-    static bool HandleVIPMallTeleportCommand(ChatHandler* handler, char const* /* args */)
+    static bool HandleVIPMallTeleportCommand(ChatHandler* handler, std::string /*args*/)
     {
         QueryResult result = WorldDatabase.Query("SELECT `map`, `position_x`, `position_y`, `position_z`, `orientation` FROM `game_tele` WHERE `name`='VIPMall'");
 
