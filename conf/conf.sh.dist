@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-#
-# CUSTOM
-#
-
-DB_CHARACTERS_CUSTOM_PATHS+=(
-    "$MOD_MALLTELEPORT_ROOT/sql/characters/"
-) 
