@@ -1,28 +1,28 @@
-#include "Configuration/Config.h"
-#include "Player.h"
-#include "Creature.h"
 #include "AccountMgr.h"
-#include "ScriptMgr.h"
+#include "Chat.h"
+#include "Configuration/Config.h"
+#include "Creature.h"
+#include "DataMap.h"
 #include "Define.h"
 #include "GossipDef.h"
-#include "DataMap.h"
-#include "Chat.h"
+#include "Player.h"
+#include "ScriptMgr.h"
 
 bool enabled;
 
 class MallTeleportPlayer : public PlayerScript
 {
 public:
-    MallTeleportPlayer() : PlayerScript("MallTeleportPlayer") { }
+    MallTeleportPlayer() : PlayerScript("MallTeleportPlayer", {
+        PLAYERHOOK_ON_LOGIN
+    }) { }
 
-    void OnLogin(Player* player) override
+    void OnPlayerLogin(Player* player) override
     {
         QueryResult result = CharacterDatabase.Query("SELECT `AccountId` FROM `premium` WHERE `active`=1 AND `AccountId`={}", player->GetSession()->GetAccountId());
 
         if (result)
-        {
             enabled = true;
-        }
 
         ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00MallTeleportModule |rmodule");
     }
@@ -84,14 +84,10 @@ public:
         Player* player = handler->GetSession()->GetPlayer();
 
         if (!player)
-        {
             return false;
-        }
 
         if (player->IsInCombat())
-        {
             return false;
-        }
 
         if (!enabled)
         {
