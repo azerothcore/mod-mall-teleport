@@ -91,7 +91,7 @@ public:
 
         if (!enabled)
         {
-            player->GetSession()->SendNotification("You do not have access to this command");
+            ChatHandler(player->GetSession()).SendNotification("You do not have access to this command");
             return false;
         }
 
